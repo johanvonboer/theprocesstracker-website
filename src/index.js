@@ -1,3 +1,7 @@
+import '@fontsource/iceland';
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/500.css';
+import '@fontsource/inter/700.css';
 import './styles.css';
 
 const THEME_KEY = 'theprocess-theme';
