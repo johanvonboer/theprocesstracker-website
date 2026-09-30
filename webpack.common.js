@@ -9,7 +9,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].[contenthash].js',
-    // Absolute so pages served from subdirectories (/license/, /delete-me/) resolve assets
+    // Absolute so pages served from subdirectories (/license/, /delete-me/, /privacy/) resolve assets
     publicPath: '/',
     clean: true,
   },
@@ -36,6 +36,11 @@ module.exports = {
       template: './src/delete-me.html',
       filename: 'delete-me/index.html',
       chunks: ['main', 'deleteMe'],
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/privacy.html',
+      filename: 'privacy/index.html',
+      chunks: ['main'],
     }),
   ],
 };

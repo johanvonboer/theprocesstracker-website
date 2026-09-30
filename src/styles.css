@@ -1161,6 +1161,11 @@ code {
   padding: 1.5rem;
 }
 
+.policy p + p,
+.policy .steps-list + p {
+  margin-top: 0.85rem;
+}
+
 .steps-list {
   padding-left: 1.25rem;
   display: flex;
