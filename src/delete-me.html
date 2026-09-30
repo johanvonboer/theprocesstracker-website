@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Delete Account — The Process</title>
+    <meta name="description" content="Permanently delete your anonymous sync account and all synced workout data from The Process server." />
+    <meta name="robots" content="noindex" />
+    <meta name="author" content="Johan" />
+    <meta name="theme-color" content="#2C3947" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#E8EDF2" media="(prefers-color-scheme: light)" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Iceland&family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+
+    <!-- ========== NAVIGATION ========== -->
+    <nav class="nav" id="nav">
+      <div class="nav__inner">
+        <a href="/" class="nav__logo">
+          <span class="nav__logo-name">The Process</span>
+          <span class="nav__logo-sub">Workout Tracker</span>
+        </a>
+        <div class="nav__links">
+          <a href="/#features" class="nav__link">Features</a>
+          <a href="/#download" class="nav__link">Download</a>
+          <button class="theme-toggle" id="themeToggle" aria-label="Switch to dark mode">
+            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="5"/>
+              <line x1="12" y1="1" x2="12" y2="3"/>
+              <line x1="12" y1="21" x2="12" y2="23"/>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+              <line x1="1" y1="12" x2="3" y2="12"/>
+              <line x1="21" y1="12" x2="23" y2="12"/>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+            </svg>
+          </button>
+        </div>
+        <button class="nav__hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      <div class="nav__mobile" id="navMobile" aria-hidden="true">
+        <a href="/#features" class="nav__mobile-link">Features</a>
+        <a href="/#download" class="nav__mobile-link">Download</a>
+      </div>
+    </nav>
+
+    <main class="page">
+      <div class="page__inner page__inner--narrow">
+
+        <header class="page__header">
+          <p class="hero__eyebrow">Sync account</p>
+          <h1 class="page__title">Delete my account</h1>
+          <p class="page__lede">
+            Permanently delete your anonymous sync account and all workout data stored on
+            <code>api.theprocesstracker.com</code>. There's no email to confirm and nothing to
+            recover afterwards.
+          </p>
+        </header>
+
+        <section class="page__section">
+          <h2 class="page__heading">Where to find your credentials</h2>
+          <ol class="steps-list">
+            <li>Open The Process on a device that is linked to your account.</li>
+            <li>Go to the <strong>Settings</strong> tab and scroll to the sync section.</li>
+            <li>Copy the <strong>GUID</strong>, then tap <strong>Reveal secret</strong> and copy the secret.</li>
+          </ol>
+          <p class="page__note">
+            If you still have the app, you can also just tap <strong>Delete account</strong> there.
+            Both the GUID and the secret are required — the GUID alone is not enough, so nobody
+            can delete your account without access to one of your devices.
+          </p>
+        </section>
+
+        <form class="delete-form" id="deleteForm" novalidate>
+          <div class="field">
+            <label class="field__label" for="guid">GUID</label>
+            <input class="field__input" id="guid" name="guid" type="text"
+                   placeholder="xxxxxxxx-xxxx-4xxx-xxxx-xxxxxxxxxxxx"
+                   autocomplete="off" autocapitalize="off" spellcheck="false" required />
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="secret">Secret</label>
+            <input class="field__input" id="secret" name="secret" type="password"
+                   placeholder="64 characters"
+                   autocomplete="off" autocapitalize="off" spellcheck="false" required />
+          </div>
+
+          <label class="field__check">
+            <input type="checkbox" id="confirm" name="confirm" required />
+            <span>I understand this permanently deletes my synced data from the server. Data stored locally on my devices is not affected.</span>
+          </label>
+
+          <p class="form-status" id="formStatus" role="status" aria-live="polite" hidden></p>
+
+          <button class="btn btn--danger" id="deleteBtn" type="submit">Delete account permanently</button>
+        </form>
+
+      </div>
+    </main>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <span class="footer__name">The Process</span>
+          <span class="footer__sub">Workout Tracker</span>
+        </div>
+        <p class="footer__copy">
+          Made by Johan &nbsp;·&nbsp; <a href="/license/">MIT License</a> &nbsp;·&nbsp; Open source
+        </p>
+        <nav class="footer__links" aria-label="Footer navigation">
+          <a href="https://play.google.com/store/apps/details?id=com.theprocesstracker.app" target="_blank" rel="noopener noreferrer">Google Play</a>
+          <a href="https://github.com/johanvonboer/theprocesstracker/releases/latest" target="_blank" rel="noopener noreferrer">Linux Download</a>
+          <a href="https://github.com/johanvonboer/theprocesstracker" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="/delete-me/">Delete account</a>
+        </nav>
+      </div>
+    </footer>
+
+  </body>
+</html>
